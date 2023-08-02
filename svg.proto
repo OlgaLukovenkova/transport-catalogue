@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package svg_serialize;
+
+message RgbColor {
+	fixed32 rgb = 1;
+}
+
+message RgbaColor {
+	fixed32 rgb = 1;
+	double alpha = 2;
+}
+
+message StringColor {
+	string color = 1;
+}
+
+message Color {
+	oneof color_type {
+		RgbColor rgb_color = 1;
+		RgbaColor rgba_color = 2;
+		StringColor string_color = 3;
+	}
+}
+
+message Point {
+	double x = 1;
+	double y = 2;
+}

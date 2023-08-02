@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package graph_serialize;
+
+message Edge {
+	uint32 from = 1;
+	uint32 to = 2;
+	double weight = 3;
+}
+
+message Graph {
+	repeated Edge edges = 1;
+}
+
+ message RouteInternalData {
+	 double weight = 1;
+
+	 message EdgeId {
+		 uint32 edge_id = 1;
+	 }
+     EdgeId prev_edge = 2;
+}
+
+message OptionalRouteInternalData {
+	RouteInternalData data = 1;
+}
+
+message Router {
+	message RouteInternalDataLine {
+		repeated OptionalRouteInternalData items = 1;
+	}
+	repeated RouteInternalDataLine routes_internal_data = 1;
+}
