@@ -9,7 +9,6 @@ namespace transport_catalogue {
 
 		using namespace std::literals;
 
-		/* Фасад для TransportCatalogue, MapRenderer, TransportRouter*/
 		class RequestHandler
 		{
 		public:
