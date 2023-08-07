@@ -66,7 +66,7 @@ namespace transport_catalogue {
 				double max_lat_ = 0;
 				double zoom_coeff_ = 0;
 			};
-        	}
+        }
 
 		class MapRenderer {
 		public:
@@ -92,7 +92,7 @@ namespace transport_catalogue {
 				settings_ = std::forward<T>(settings);
 			}
 
-           		const Settings& GetSettings() const;            
+           	const Settings& GetSettings() const;            
             
 			void DrawMap(std::ostream& out, const std::set<domain::Bus>& buses) const;
 

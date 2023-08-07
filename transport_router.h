@@ -40,7 +40,7 @@ namespace transport_catalogue {
 		}
 
 		/* for serialization */
-		template <typename Settings, typename Graph, typename Ids, typename Segments> //для сериализации
+		template <typename Settings, typename Graph, typename Ids, typename Segments> 
 		TransportGraph(Settings&& settings, Graph&& graph, Ids&& id_by_stops, Segments&& segments)
 			: settings_(std::forward<Settings>(settings))
 			, graph_(std::forward<Graph>(graph))

@@ -24,10 +24,10 @@ namespace transport_catalogue {
 
         void MapRenderer::DrawMap(std::ostream& out, const std::set<domain::Bus>& buses) const {
 
-            //1) определить масштабирующие коэффициенты
+            //1) define scaling coefficients
             detail::SphereProjector projector = BuildProjector(buses);
 
-            //2) добавить объекты слоями на карту map
+            //2) put objects on map, layer by layer
             svg::Document map_doc;
             // I 
             int color_index = 0;
@@ -41,7 +41,7 @@ namespace transport_catalogue {
             // IV 
             std::for_each(stops.begin(), stops.end(), [&](const auto& stop) { AddStopNameToMap(stop, projector, map_doc); });
 
-            //3) нарисовать
+            //3) draw
             map_doc.Render(out);
         }
 

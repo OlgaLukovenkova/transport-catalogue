@@ -8,7 +8,7 @@ namespace transport_catalogue {
 
 	namespace interfaces {
 
-		/* Вспомогательные функции */
+		/* supporting functions */
 		namespace detail {
 
 			bool CheckNodeType(const json::Node& node, std::string_view category) {

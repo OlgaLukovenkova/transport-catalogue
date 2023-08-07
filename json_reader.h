@@ -21,8 +21,8 @@ namespace transport_catalogue {
 			const RequestHandler& GetHandler() const;
 
 		private:
-			TransportCatalogue& catalogue_; //связываем с готовым каталогом
-			RequestHandler handler_; //создается на основе готового каталога
+			TransportCatalogue& catalogue_; //link to catalogue by ref
+			RequestHandler handler_; //create on base of catalogue
 			std::filesystem::path serialization_file_;
 
 			void SetDistancesFromJSON(std::string_view from, const json::Dict& distances);

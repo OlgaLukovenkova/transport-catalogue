@@ -119,17 +119,17 @@ namespace json {
             string line;
 
             while (true) {
-                //если читать нечего или перевод на следующую строку, или возврат каретки
+                // if nothing to read or new line or carriage return
                 if (!input || input.peek() == '\n' || input.peek() == '\r') {
                     throw ParsingError("String parsing error"s);
                 }
-                // если встретили закрывающуюс€ кавычку
+                // if meet ")" 
                 if (input.peek() == '\"') {
                     input.get();
                     break;
                 }
 
-                // если встретили начало экранируемой последовательности
+                // if meet escapable sequence
                 if (input.peek() == '\\') {
                     input.get();
 
@@ -170,7 +170,7 @@ namespace json {
                 }
 
                 string key = LoadString(input).AsString();
-                input >> c; // знак :
+                input >> c; // sign :
                 result.insert({ move(key), LoadNode(input) });
             }
 
@@ -194,31 +194,31 @@ namespace json {
                 }
             };
 
-            //знак
+            // sign
             if (input.peek() == '-') {
                 num += static_cast<char>(input.get());
             }
 
-            //или 0 (один)
+            // or 0
             if (input.peek() == '0') {
                 num += static_cast<char>(input.get());
             }
-            //или последовательность циффр не с 0
+            // or digital sequence (not starts with 0)
             else {
                 read_digits();
             }
 
-            //если есть ".", то дробное 
+            //if '.' then float number
             if (input.peek() == '.') {
                 num += static_cast<char>(input.get());
                 is_int = false;
                 read_digits();
             }
 
-            //если есть "E" или "e"
+            // if have 'E' or 'e'
             if (tolower(input.peek()) == 'e') {
                 num += static_cast<char>(input.get());
-                // после E(e) об€зательно знак
+                // after 'E' or 'e' should be sign
                 if (input.peek() == '+' || input.peek() == '-') {
                     num += static_cast<char>(input.get());
                 }
